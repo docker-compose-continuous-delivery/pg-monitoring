@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  blackbox:
+    image: quay.io/prometheus/blackbox-exporter:latest
+    container_name: blackbox
+    restart: unless-stopped
+    volumes:
+      - ./config.yml:/etc/blackbox_exporter/config.yml
+    networks:
+      - prometheus
+    cap_add:
+      - NET_RAW
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+
+networks:
+  prometheus:
+    external: true
