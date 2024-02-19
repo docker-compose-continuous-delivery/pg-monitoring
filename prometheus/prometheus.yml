@@ -2,7 +2,7 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'blackbox'
+  - job_name: 'blackbox-http'
     metrics_path: /probe
     params:
       module: [ http_2xx ]
@@ -48,6 +48,28 @@ scrape_configs:
           - https://sopuli.xyz
           - https://thepiratebay.org/index.html
           - https://yggtorrent.qa
+    relabel_configs:
+      - source_labels: [ __address__ ]
+        target_label: __param_target
+      - source_labels: [ __param_target ]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115
+  - job_name: 'blackbox-icmp'
+    metrics_path: /probe
+    params:
+      module: [ icmp ]
+    static_configs:
+      - targets:
+          - 1.1.1.1
+          - n1.oze.li
+          - a1.apoorva64.com
+          - node-apoorva.apoorva64.com
+          - node-raphael.apoorva64.com
+          - node-tom.apoorva64.com
+          - node-raphael2.apoorva64.com
+          - a3.apoorva64.com
+          - loadbalancer.apoorva64.com
     relabel_configs:
       - source_labels: [ __address__ ]
         target_label: __param_target

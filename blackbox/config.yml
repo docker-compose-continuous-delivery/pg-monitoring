@@ -4,3 +4,6 @@ modules:
     timeout: 5s
     http:
       method: GET
+  icmp:
+    prober: icmp
+    timeout: 5s
