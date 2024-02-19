@@ -5,15 +5,12 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
-    ports:
-      - "3000:3000"
     volumes:
       - ./grafana/data:/var/lib/grafana
     networks:
       - traefik
     labels:
       - traefik.enable=true
-      - traefik.docker.network=traefik
       - traefik.http.routers.grafana.rule=Host(`grafana.${BASE_DOMAIN}`)
       - traefik.http.routers.grafana.entrypoints=websecure
       - traefik.http.routers.grafana.tls.certresolver=cloudflare
