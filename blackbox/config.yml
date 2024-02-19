@@ -4,7 +4,5 @@ modules:
     timeout: 5s
     http:
       method: GET
-  http_post_2xx:
-    prober: http
-    http:
-      method: POST
+    headers:
+      User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0"
