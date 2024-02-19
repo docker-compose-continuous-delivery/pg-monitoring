@@ -9,6 +9,7 @@ services:
       - ./grafana/data:/var/lib/grafana
     networks:
       - traefik
+      - prometheus
     labels:
       - traefik.enable=true
       - traefik.http.routers.grafana.rule=Host(`grafana.${BASE_DOMAIN}`)
@@ -19,4 +20,6 @@ services:
 
 networks:
   traefik:
+    external: true
+  prometheus:
     external: true

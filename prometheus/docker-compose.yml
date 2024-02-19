@@ -14,10 +14,8 @@ services:
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
     networks:
-      - traefik
-    labels:
-      - traefik.enable=false
+      - prometheus
 
 networks:
-  traefik:
+  prometheus:
     external: true

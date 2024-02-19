@@ -8,15 +8,13 @@ services:
     volumes:
       - ./config.yml:/etc/blackbox_exporter/config.yml
     networks:
-      - traefik
+      - prometheus
     cap_add:
       - NET_RAW
     dns:
       - 1.1.1.1
       - 8.8.8.8
-    labels:
-      - traefik.enable=false
 
 networks:
-  traefik:
+  prometheus:
     external: true
