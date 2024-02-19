@@ -14,6 +14,7 @@ services:
       - prometheus
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik
       - traefik.http.routers.grafana.rule=Host(`grafana.${BASE_DOMAIN}`)
       - traefik.http.routers.grafana.entrypoints=websecure
       - traefik.http.routers.grafana.tls.certresolver=cloudflare
