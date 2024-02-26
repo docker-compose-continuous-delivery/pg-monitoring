@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  tapo_exporter:
+    image: ghcr.io/ozeliurs/tapo-plug-exporter:latest
+    container_name: tapo_exporter
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./tapo.json:/usr/src/app/tapo.json
+    networks:
+      - traefik
+    labels:
+      - 'traefik.enable=false'
+
+networks:
+  traefik:
+    external: true

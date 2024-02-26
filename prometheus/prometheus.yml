@@ -68,7 +68,6 @@ scrape_configs:
           - node-raphael.apoorva64.com
           - node-tom.apoorva64.com
           - node-raphael2.apoorva64.com
-          - a3.apoorva64.com
           - loadbalancer.apoorva64.com
     relabel_configs:
       - source_labels: [ __address__ ]
@@ -77,3 +76,7 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: blackbox:9115
+  - job_name: 'tapo'
+    static_configs:
+      - targets:
+          - tapo_exporter:8000
