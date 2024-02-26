@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  tplink-plug-exporter:
+    image: fffonion/tplink-plug-exporter
+    container_name: tplink-plug-exporter
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  traefik:
+    external: true
