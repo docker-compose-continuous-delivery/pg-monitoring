@@ -10,6 +10,8 @@ services:
       - ./tapo.json:/usr/src/app/tapo.json
     env_file:
       - .tapo.env
+    environment:
+      - PROMETHEUS_MULTIPROC_DIR=/tmp
     networks:
       - traefik
     labels:
