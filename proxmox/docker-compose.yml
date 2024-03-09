@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  pve-exporter:
+    image: prompve/prometheus-pve-exporter
+    container_name: pve-exporter
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - traefik
+    labels:
+      - traefik.enable=false
+
+networks:
+  traefik:
+    external: true
