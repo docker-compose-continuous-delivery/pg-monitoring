@@ -89,3 +89,19 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: kasa-exporter:80
+  - job_name: 'pve'
+    static_configs:
+      - targets:
+        - 192.168.1.96
+    metrics_path: /pve
+    params:
+      module: [default]
+      cluster: ['1']
+      node: ['1', '2']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9221  # PVE exporter.
