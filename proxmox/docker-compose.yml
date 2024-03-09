@@ -7,6 +7,8 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      - PVE_VERIFY_SSL=false
     networks:
       - traefik
     labels:
