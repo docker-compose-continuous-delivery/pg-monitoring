@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  tplink-plug-exporter:
-    image: fffonion/tplink-plug-exporter
-    container_name: tplink-plug-exporter
+  kasa-exporter:
+    image: ghcr.io/ozeliurs/kasa-exporter:latest
+    container_name: kasa-exporter
     restart: unless-stopped
     networks:
       - traefik
