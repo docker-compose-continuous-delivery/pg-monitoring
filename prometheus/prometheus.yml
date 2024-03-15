@@ -96,20 +96,12 @@ scrape_configs:
     static_configs:
       - targets:
         - 192.168.1.96
+        - 192.168.1.169
     metrics_path: /pve
     params:
       module: [default]
       cluster: ['1']
       node: ['1', '2']
-  - job_name: 'pve'
-    static_configs:
-      - targets:
-          - 192.168.1.169
-    metrics_path: /pve
-    params:
-      module: [ default ]
-      cluster: [ '1' ]
-      node: [ '2' ]
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
