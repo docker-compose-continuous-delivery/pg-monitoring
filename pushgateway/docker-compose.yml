@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  pushgateway:
+    image: prom/pushgateway
+    ports:
+      - "9091:9091"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pushgateway.rule=Host(`pushgateway.${BASE_DOMAIN}`)"
+      - "traefik.http.routers.pushgateway.entrypoints=websecure"
+      - "traefik.http.routers.pushgateway.tls.certresolver=cloudflare"
+      - "traefik.http.routers.pushgateway.service=pushgateway"
+      - "traefik.http.services.pushgateway.loadbalancer.server.port=9091"
+
+      - "traefik.http.routers.pushgateway.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=exporter:$2y$05$6WZfE8fOQBkiGz.HF6/7nub4sAO0/6orqqawjqf.DtLpoiM6c0aWq"
+
+networks:
+  traefik:
+    external: true
