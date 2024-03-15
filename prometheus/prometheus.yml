@@ -13,7 +13,6 @@ scrape_configs:
       - targets:
           # Ozeliurs Realm
           - https://ozeliurs.com
-          - https://blog.ozeliurs.com
           - https://cf.ozeliurs.com
           - https://flomepage.ozeliurs.com
           - https://git.ozeliurs.com
@@ -44,34 +43,6 @@ scrape_configs:
           - https://login.univ-cotedazur.fr
           - https://sco.polytech.unice.fr/1/invite?login=true
           - https://lms.univ-cotedazur.fr
-          - https://polytech.univ-cotedazur.fr
-
-          # Public Realm
-          - http://libgen.is
-          - https://sopuli.xyz
-          - https://thepiratebay.org/index.html
-          - https://yggtorrent.qa
-    relabel_configs:
-      - source_labels: [ __address__ ]
-        target_label: __param_target
-      - source_labels: [ __param_target ]
-        target_label: instance
-      - target_label: __address__
-        replacement: blackbox:9115
-  - job_name: 'blackbox-icmp'
-    metrics_path: /probe
-    params:
-      module: [ icmp ]
-    static_configs:
-      - targets:
-          - 1.1.1.1
-          - n1.oze.li
-          - a1.apoorva64.com
-          - node-apoorva.apoorva64.com
-          - node-raphael.apoorva64.com
-          - node-tom.apoorva64.com
-          - node-raphael2.apoorva64.com
-          - loadbalancer.apoorva64.com
     relabel_configs:
       - source_labels: [ __address__ ]
         target_label: __param_target
