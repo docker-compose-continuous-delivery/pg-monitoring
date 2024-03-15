@@ -14,7 +14,7 @@ services:
       - "traefik.http.services.pushgateway.loadbalancer.server.port=9091"
 
       - "traefik.http.routers.pushgateway.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=exporter:\$2y\$05\$IwF.mzT8gEtKtnEwlC6JGezjhhc1w5tfr7SEkqW19JeZLSFZVHySe"
+      - "traefik.http.middlewares.auth.basicauth.users=exporter:$2y$05$/uaAfSYeiPtJpYhLLwNRT.oB9s5RE19jdjCwgmYx/lLQexvq34vbK"
 
 networks:
   traefik:
