@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  freebox-exporter:
+    image: ghcr.io/ozeliurs/freebox-exporter:latest
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  traefik:
+    external: true
