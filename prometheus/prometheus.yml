@@ -82,6 +82,7 @@ scrape_configs:
     static_configs:
       - targets: [ 'pushgateway:9091' ]
   - job_name: 'freebox'
+    scrape_interval: 30s
     static_configs:
       - targets: [ 'freebox-exporter:9091' ]
 
