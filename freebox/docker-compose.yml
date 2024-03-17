@@ -4,6 +4,8 @@ services:
   freebox-exporter:
     image: ghcr.io/ozeliurs/freebox-exporter:latest
     restart: unless-stopped
+    volumes:
+      - ./creds:/app/creds
     networks:
       - traefik
     labels:

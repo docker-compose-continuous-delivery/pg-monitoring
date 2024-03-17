@@ -3,6 +3,7 @@ version: '3.9'
 services:
   pushgateway:
     image: prom/pushgateway
+    restart: unless-stopped
     networks:
       - traefik
     labels:
