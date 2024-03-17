@@ -83,5 +83,5 @@ scrape_configs:
       - targets: [ 'pushgateway:9091' ]
   - job_name: 'freebox'
     static_configs:
-      - targets: [ 'freebox-exporter:8080' ]
+      - targets: [ 'freebox-exporter:9091' ]
 
