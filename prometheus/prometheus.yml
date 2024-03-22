@@ -51,6 +51,7 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox:9115
   - job_name: 'kasa'
+    scrape_interval: 1s
     static_configs:
       - targets:
           - 192.168.1.61
