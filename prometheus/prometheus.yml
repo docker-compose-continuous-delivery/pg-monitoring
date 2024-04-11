@@ -89,6 +89,7 @@ scrape_configs:
     static_configs:
       - targets: [ 'freebox-exporter:9091' ]
   - job_name: 'redis_exporter_targets'
+    scrape_interval: 5s
     static_configs:
       - targets:
         - redis://fbx.ozeliurs.com:6379
