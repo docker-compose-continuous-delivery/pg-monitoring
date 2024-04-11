@@ -1,10 +1,17 @@
 version: '3.9'
 
 services:
-    redis-exporter:
-        image: oliver006/redis_exporter
-        ports:
-            - '9121:9121'
-        env_file:
-          - .env
-        container_name: redis_exporter
+  redis-exporter:
+    image: oliver006/redis_exporter
+    restart: unless-stopped
+    ports:
+      - '9121:9121'
+    env_file:
+      - .env
+    container_name: redis_exporter
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
