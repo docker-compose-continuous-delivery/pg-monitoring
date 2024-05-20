@@ -116,5 +116,5 @@ scrape_configs:
       - source_labels: [ __param_target ]
         target_label: instance
       - target_label: __address__
-        replacement: postgresql-exporter:9116
+        replacement: postgresql-exporter:9187
 
