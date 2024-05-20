@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     environment:
       - DATA_SOURCE_URI=n1.oze.li:5432/kub?sslmode=disable
+    env_file:
+      - .env
     networks:
       - traefik
     labels:
