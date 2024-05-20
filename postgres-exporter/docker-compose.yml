@@ -1,0 +1,15 @@
+services:
+  postgresql-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter
+    container_name: postgres_exporter
+    restart: unless-stopped
+    environment:
+      - DATA_SOURCE_NAME: "postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}?sslmode=disable"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  traefik:
+    external: true
