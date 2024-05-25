@@ -1,5 +1,9 @@
 global:
   scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - 'alerts/*.yml'
 
 scrape_configs:
   - job_name: node
@@ -7,53 +11,9 @@ scrape_configs:
       - targets:
           - node_exporter:9100
           - 192.168.1.126:9100
-          - 100.64.0.39:9100
-          - 100.64.0.69:9100
-  - job_name: 'blackbox-http'
-    metrics_path: /probe
-    params:
-      module: [ http_2xx ]
-    static_configs:
-      - targets:
-          # Ozeliurs Realm
-          - https://ozeliurs.com
-          - https://cf.ozeliurs.com
-          - https://flomepage.ozeliurs.com
-          - https://git.ozeliurs.com
-          - https://headscale.ozeliurs.com/windows
-          - https://hedgedoc.ozeliurs.com
-          - https://privatebin.ozeliurs.com
-          - https://sonarqube.ozeliurs.com
-          - https://vaultwarden.ozeliurs.com
-          - https://cdn.ozeliurs.com
+          - vmpx15.polytech.hs.ozeliurs.com
+          - node-nino4.k3s.hs.ozeliurs.com
 
-          # Basalt Realm
-          - https://jellyfin.basalt.ozeliurs.com
-          - https://kavita.basalt.ozeliurs.com
-
-          # Obsidian Realm
-          - https://obsidian.ozeliurs.com
-
-          # Granite Realm
-          - https://granite.ozeliurs.com
-
-          # Apoo's Realm
-          - https://weave-gitops.devops-tools.apoorva64.com
-          - https://keycloak.auth.apoorva64.com
-          - https://grafana.monitoring.apoorva64.com
-          - https://react-flight-tracker.apoorva64.com
-
-          # Polytech Realm
-          - https://login.univ-cotedazur.fr
-          - https://sco.polytech.unice.fr/1/invite?login=true
-          - https://lms.univ-cotedazur.fr
-    relabel_configs:
-      - source_labels: [ __address__ ]
-        target_label: __param_target
-      - source_labels: [ __param_target ]
-        target_label: instance
-      - target_label: __address__
-        replacement: blackbox:9115
   - job_name: 'kasa'
     scrape_interval: 1s
     static_configs:
@@ -70,6 +30,7 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: kasa-exporter:80
+
   - job_name: 'pve'
     static_configs:
       - targets:
@@ -83,15 +44,18 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: pve-exporter:9221  # PVE exporter.
+
   - job_name: 'pushgateway'
     scrape_interval: 5s
     honor_labels: true
     static_configs:
       - targets: [ 'pushgateway:9091' ]
+
   - job_name: 'freebox'
     scrape_interval: 30s
     static_configs:
       - targets: [ 'freebox-exporter:9091' ]
+
   - job_name: 'redis_exporter_targets'
     scrape_interval: 5s
     static_configs:
@@ -105,6 +69,7 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: redis-exporter:9121
+
   - job_name: 'postgres'
     static_configs:
       - targets:
