@@ -5,3 +5,4 @@ redis/.env
 postgres-exporter/.env
 prometheus/conf/secrets/discord_webhook.txt
 prometheus/.env
+prometheus/conf/alertmanager.yml
