@@ -30,6 +30,8 @@ services:
       - "9093:9093"
     command:
       - --config.file=/etc/prometheus/conf/alertmanager.yml
+    env_file:
+      - .env
     networks:
       - traefik
     labels:

@@ -22,7 +22,7 @@ receivers:
   - name: "discord"
     discord_configs:
       - send_resolved: true
-        webhook_url_file: "/etc/prometheus/conf/secrets/discord_webhook.txt"
+        webhook_url: '%{DISCORD_WEBHOOK_URL}'
         title: "{{ .CommonAnnotations.summary }}"
         message: "{{ .CommonAnnotations.description }}"
 
