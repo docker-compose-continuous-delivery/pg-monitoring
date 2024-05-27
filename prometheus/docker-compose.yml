@@ -20,6 +20,21 @@ services:
     labels:
       - traefik.enable=false
 
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    restart: unless-stopped
+    volumes:
+      - ./conf:/etc/prometheus/conf
+    ports:
+      - "9093:9093"
+    command:
+      - --config.file=/etc/prometheus/conf/alertmanager.yml
+    networks:
+      - traefik
+    labels:
+      - traefik.enable=false
+
 networks:
   traefik:
     external: true

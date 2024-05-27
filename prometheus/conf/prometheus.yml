@@ -80,3 +80,9 @@ scrape_configs:
       - targets:
           - postgresql-exporter:9187
 
+alerting:
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets:
+            - "alertmanager:9093"

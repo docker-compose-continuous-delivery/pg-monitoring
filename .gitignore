@@ -3,3 +3,4 @@
 !*.secret
 redis/.env
 postgres-exporter/.env
+prometheus/conf/secrets/discord_webhook.txt
