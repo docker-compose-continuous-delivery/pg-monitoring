@@ -1,0 +1,14 @@
+groups:
+
+- name: K3s Routes
+
+  rules:
+
+    - alert: K3sRouteDown
+      expr: 'sum by (to) (k8s_network_available) / count by (to) (k8s_network_available) < 0.5'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: K3s route down (instance {{ $labels.instance }})
+        description: "K3s route is down\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
