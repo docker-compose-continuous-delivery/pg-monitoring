@@ -10,5 +10,5 @@ groups:
       labels:
         severity: critical
       annotations:
-        summary: K3s route down (instance {{ $labels.instance }})
+        summary: K3s route down (instance {{ $labels.to }})
         description: "K3s route is down\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
