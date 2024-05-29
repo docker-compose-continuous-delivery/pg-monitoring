@@ -18,7 +18,7 @@ groups:
       expr: 'sum by (machine, prefix) (route_advertised{machine!="", prefix=~"::/0|0.0.0.0/0"}) >= 1 and sum by (machine, prefix) (route_enabled{machine!="", prefix=~"::/0|0.0.0.0/0"}) == 0'
       for: 0m
       labels:
-        severity: critical
+        severity: warning
       annotations:
         summary: Exit route disabled (instance {{ $labels.machine }})
         description: "Exit route is disabled\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
