@@ -1,0 +1,24 @@
+groups:
+
+- name: Headscale
+
+  rules:
+
+    - alert: K3sRouteDisabled
+      expr: 'route_enabled{prefix=~"10.42.*.*"} == 0'
+      for: 0m
+      labels:
+        severity: critical
+        responder: maxime
+      annotations:
+        summary: K3s route disabled (instance {{ $labels.machine }})
+        description: "K3s route is disabled\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - alert: ExitRouteDisabled
+      expr: 'sum by (machine, prefix) (route_advertised{machine!="", prefix=~"::/0|0.0.0.0/0"}) >= 1 and sum by (machine, prefix) (route_enabled{machine!="", prefix=~"::/0|0.0.0.0/0"}) == 0'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Exit route disabled (instance {{ $labels.machine }})
+        description: "Exit route is disabled\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
