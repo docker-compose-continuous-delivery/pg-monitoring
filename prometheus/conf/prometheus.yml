@@ -9,12 +9,12 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: [ 'localhost:9090' ]
 
   - job_name: 'alertmanager'
     scrape_interval: 5s
     static_configs:
-      - targets: ['alertmanager:9093']
+      - targets: [ 'alertmanager:9093' ]
 
   - job_name: node
     static_configs:
@@ -84,6 +84,13 @@ scrape_configs:
     static_configs:
       - targets:
           - postgresql-exporter:9187
+
+  - job_name: 'headscale'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets:
+          - headscale-exporter:8000
 
 alerting:
   alertmanagers:

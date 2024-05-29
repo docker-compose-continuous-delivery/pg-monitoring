@@ -1,0 +1,16 @@
+services:
+  headscale-exporter:
+    image: ghcr.io/ozeliurs/headscale-exporter:latest
+    container_name: headscale-exporter
+    environment:
+      - "HEADSCALE_BASE_URL=https://headscale.ozeliurs.com/api/v1"
+    env_file:
+      - .env
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  traefik:
+    external: true
