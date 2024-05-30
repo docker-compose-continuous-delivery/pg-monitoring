@@ -23,6 +23,7 @@ scrape_configs:
           - 192.168.1.126:9100
           - vmpx15.polytech.hs.ozeliurs.com:9100
           - node-nino4.k3s.hs.ozeliurs.com:9100
+          - kalivku35.sdn.hs.ozeliurs.com:9100
 
   - job_name: 'kasa'
     scrape_interval: 1s
