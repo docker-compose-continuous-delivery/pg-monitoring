@@ -68,7 +68,7 @@ groups:
         description: "PostgreSQL instance should have more connections (> 5)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
     - alert: PostgresqlDeadLocks
-      expr: 'increase(pg_stat_database_deadlocks{datname!~"template.*|postgres"}[1m]) > 5'
+      expr: 'increase(pg_stat_database_deadlocks{datname!~"template.*|postgres|root"}[1m]) > 5'
       for: 0m
       labels:
         severity: warning
@@ -77,7 +77,7 @@ groups:
         description: "PostgreSQL has dead-locks\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
     - alert: PostgresqlHighRollbackRate
-      expr: 'sum by (namespace,datname) ((rate(pg_stat_database_xact_rollback{datname!~"template.*|postgres",datid!="0"}[3m])) / ((rate(pg_stat_database_xact_rollback{datname!~"template.*|postgres",datid!="0"}[3m])) + (rate(pg_stat_database_xact_commit{datname!~"template.*|postgres",datid!="0"}[3m])))) > 0.02'
+      expr: 'sum by (namespace,datname) ((rate(pg_stat_database_xact_rollback{datname!~"template.*|postgres|root",datid!="0"}[3m])) / ((rate(pg_stat_database_xact_rollback{datname!~"template.*|postgres|root",datid!="0"}[3m])) + (rate(pg_stat_database_xact_commit{datname!~"template.*|postgres|root",datid!="0"}[3m])))) > 0.02'
       for: 0m
       labels:
         severity: warning
