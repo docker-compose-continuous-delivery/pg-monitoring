@@ -23,6 +23,12 @@ scrape_configs:
           - 192.168.1.126:9100
           - vmpx15.polytech.hs.ozeliurs.com:9100
           - kalivku35.sdn.hs.ozeliurs.com:9100
+          - n1.ozeliurs.gmail.com.hs.ozeliurs.com:9100
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets:
+          - n1.ozeliurs.gmail.com.hs.ozeliurs.com:8080
 
   - job_name: 'kasa'
     scrape_interval: 1s
