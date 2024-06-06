@@ -31,7 +31,8 @@ scrape_configs:
           - n1.ozeliurs.gmail.com.hs.ozeliurs.com:8080
 
   - job_name: 'kasa'
-    scrape_interval: 1s
+    scrape_interval: 5s
+    scrape_timeout: 2s
     static_configs:
       - targets:
           - 192.168.1.61
