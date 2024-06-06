@@ -7,3 +7,4 @@ prometheus/conf/secrets/discord_webhook.txt
 prometheus/.env
 prometheus/conf/alertmanager.yml
 headscale-exporter/.env
+headscale-exporter-apoo/.env
