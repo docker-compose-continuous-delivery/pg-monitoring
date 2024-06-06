@@ -1,7 +1,7 @@
 services:
-  headscale-exporter:
+  headscale-exporter-apoo:
     image: ghcr.io/ozeliurs/headscale-exporter:latest
-    container_name: headscale-exporter
+    container_name: headscale-exporter-apoo
     environment:
       - "HEADSCALE_BASE_URL=http://headscale.apoorva64.com:8080/api/v1"
     env_file:

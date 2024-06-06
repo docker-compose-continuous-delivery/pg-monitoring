@@ -97,6 +97,7 @@ scrape_configs:
     static_configs:
       - targets:
           - headscale-exporter:8000
+          - headscale-exporter-apoo:8000
 
 alerting:
   alertmanagers:
