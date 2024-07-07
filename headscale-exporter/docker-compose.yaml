@@ -2,6 +2,7 @@ services:
   headscale-exporter:
     image: ghcr.io/ozeliurs/headscale-exporter:latest
     container_name: headscale-exporter
+    restart: unless-stopped
     environment:
       - "HEADSCALE_BASE_URL=https://headscale.ozeliurs.com/api/v1"
     env_file:
