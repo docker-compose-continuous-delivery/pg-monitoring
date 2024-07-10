@@ -3,7 +3,7 @@ services:
     image: nginx/nginx-prometheus-exporter:1.1.0
     container_name: nginx-exporter
     restart: unless-stopped
-    command: --nginx.scrape-uri=http://192.168.1.71:81/nginx_status
+    command: --nginx.scrape-uri=http://192.168.1.201:81/nginx_status
     networks:
       - traefik
     labels:
