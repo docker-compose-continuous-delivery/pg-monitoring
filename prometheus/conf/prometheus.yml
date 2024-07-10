@@ -108,6 +108,7 @@ scrape_configs:
           - nginx-exporter:9113
 
   - job_name: 'nginx-logs'
+    scrape_interval: 5s
     static_configs:
       - targets:
           - 192.168.1.201:5000
