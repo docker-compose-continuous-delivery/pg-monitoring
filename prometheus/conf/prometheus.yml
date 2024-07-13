@@ -102,10 +102,10 @@ scrape_configs:
           - headscale-exporter:8000
           - headscale-exporter-apoo:8000
 
-  - job_name: 'nginx'
-    static_configs:
-      - targets:
-          - nginx-exporter:9113
+  #- job_name: 'nginx'
+  #  static_configs:
+  #    - targets:
+  #        - nginx-exporter:9113
 
   - job_name: 'nginx-logs'
     scrape_interval: 5s
