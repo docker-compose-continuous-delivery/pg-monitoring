@@ -108,6 +108,10 @@ scrape_configs:
       key_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client-key.pem
       insecure_skip_verify: false
 
+  - job_name: caddy
+    static_configs:
+      - targets: ["192.168.1.251:2019", "192.168.1.252:2019"]
+
 alerting:
   alertmanagers:
     - scheme: http
