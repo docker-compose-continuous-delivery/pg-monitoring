@@ -3,25 +3,25 @@ global:
   evaluation_interval: 15s
 
 rule_files:
-  - 'alerts/*.yml'
+  - "alerts/*.yml"
 
 scrape_configs:
-  - job_name: 'prometheus'
+  - job_name: "prometheus"
     scrape_interval: 5s
     static_configs:
-      - targets: [ 'localhost:9090' ]
+      - targets: ["localhost:9090"]
 
-  - job_name: 'alertmanager'
+  - job_name: "alertmanager"
     scrape_interval: 5s
     static_configs:
-      - targets: [ 'alertmanager:9093' ]
+      - targets: ["alertmanager:9093"]
 
   - job_name: node
     static_configs:
       - targets:
           - adakite.local.ozeliurs.com:9100
           - obsidian.local.ozeliurs.com:9100
-  - job_name: 'kasa'
+  - job_name: "kasa"
     scrape_interval: 5s
     scrape_timeout: 2s
     static_configs:
@@ -32,61 +32,61 @@ scrape_configs:
           - 192.168.1.42
     metrics_path: /scrape
     relabel_configs:
-      - source_labels: [ __address__ ]
+      - source_labels: [__address__]
         target_label: __param_target
-      - source_labels: [ __param_target ]
+      - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
         replacement: kasa-exporter:80
 
-  - job_name: 'pve'
+  - job_name: "pve"
     static_configs:
       - targets:
           - 192.168.1.96
           - 192.168.1.169
     metrics_path: /pve
     relabel_configs:
-      - source_labels: [ __address__ ]
+      - source_labels: [__address__]
         target_label: __param_target
-      - source_labels: [ __param_target ]
+      - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: pve-exporter:9221  # PVE exporter.
+        replacement: pve-exporter:9221 # PVE exporter.
 
-  - job_name: 'pushgateway'
+  - job_name: "pushgateway"
     scrape_interval: 5s
     honor_labels: true
     static_configs:
-      - targets: [ 'pushgateway:9091' ]
+      - targets: ["pushgateway:9091"]
 
-  - job_name: 'freebox'
+  - job_name: "freebox"
     scrape_interval: 30s
     static_configs:
-      - targets: [ 'freebox-exporter:9091' ]
+      - targets: ["freebox-exporter:9091"]
 
-  - job_name: 'redis_exporter_targets'
+  - job_name: "redis_exporter_targets"
     scrape_interval: 5s
     static_configs:
       - targets:
           - redis://fbx.ozeliurs.com:6379
     metrics_path: /scrape
     relabel_configs:
-      - source_labels: [ __address__ ]
+      - source_labels: [__address__]
         target_label: __param_target
-      - source_labels: [ __param_target ]
+      - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
         replacement: redis-exporter:9121
 
-  - job_name: 'headscale'
+  - job_name: "headscale"
     scrape_interval: 15s
-    metrics_path: '/metrics'
+    metrics_path: "/metrics"
     static_configs:
       - targets:
           - headscale-exporter:8000
           - headscale-exporter-apoo:8000
 
-  - job_name: 'nginx-logs'
+  - job_name: "nginx-logs"
     scrape_interval: 5s
     static_configs:
       - targets:
@@ -102,12 +102,12 @@ scrape_configs:
           - etcd-node-raphael.apoorva64.com:2379
           - etcd-node-apoorva.apoorva64.com:2379
           - etcd-node-maxime.apoorva64.com:2379
-   tls_config:
-    ca_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/ca.pem
-    cert_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client.pem
-    key_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client-key.pem
-    insecure_skip_verify: false
-    
+    tls_config:
+      ca_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/ca.pem
+      cert_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client.pem
+      key_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client-key.pem
+      insecure_skip_verify: false
+
 alerting:
   alertmanagers:
     - scheme: http
