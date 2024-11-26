@@ -104,8 +104,8 @@ scrape_configs:
           - etcd-node-maxime.apoorva64.com:2379
    tls_config:
     ca_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/ca.pem
-    cert_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/etcd-cert.pem
-    key_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/etcd-key.pem
+    cert_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client.pem
+    key_file: /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/client-key.pem
     insecure_skip_verify: false
     
 alerting:
