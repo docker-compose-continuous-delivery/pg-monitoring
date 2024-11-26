@@ -8,6 +8,7 @@ services:
     volumes:
       - ./conf:/etc/prometheus/conf
       - ./prometheus:/prometheus
+      - /etc/ssl/very-secure-secrets/k3s-startupnation-cluster/:/etc/ssl/very-secure-secrets/k3s-startupnation-cluster/
     ports:
       - "9090:9090"
     command:
