@@ -114,7 +114,7 @@ scrape_configs:
 
   - job_name: bitmagnet
     static_configs:
-      - targets: ["https://bitmagnet.ozeliurs.com/metrics"]
+      - targets: ["bitmagnet.ozeliurs.com"]
     basic_auth:
       username: "ozeliurs"
       password: "${BITMAGNET_METRICS_PASSWORD}"
