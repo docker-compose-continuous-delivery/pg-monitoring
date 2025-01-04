@@ -117,7 +117,7 @@ scrape_configs:
       - targets: ["bitmagnet.ozeliurs.com"]
     basic_auth:
       username: "ozeliurs"
-      password: "${BITMAGNET_METRICS_PASSWORD}"
+      password: ${BITMAGNET_METRICS_PASSWORD}
 
 alerting:
   alertmanagers:
