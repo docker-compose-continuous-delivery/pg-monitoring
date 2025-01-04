@@ -5,6 +5,8 @@ services:
     image: prom/prometheus
     container_name: prometheus
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - ./conf:/etc/prometheus/conf
       - ./prometheus:/prometheus
