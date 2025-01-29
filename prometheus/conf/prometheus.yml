@@ -119,6 +119,10 @@ scrape_configs:
       username: "ozeliurs"
       password: ${BITMAGNET_METRICS_PASSWORD}
 
+  - job_name: "jellyfin"
+    static_configs:
+      - targets: ["jellyfin.ozeliurs.com"]
+
 alerting:
   alertmanagers:
     - scheme: http
