@@ -112,13 +112,6 @@ scrape_configs:
     static_configs:
       - targets: ["192.168.1.251:2019", "192.168.1.252:2019"]
 
-  - job_name: bitmagnet
-    static_configs:
-      - targets: ["bitmagnet.ozeliurs.com"]
-    basic_auth:
-      username: "ozeliurs"
-      password: ${BITMAGNET_METRICS_PASSWORD}
-
   - job_name: "jellyfin"
     static_configs:
       - targets: ["jellyfin.ozeliurs.com"]
